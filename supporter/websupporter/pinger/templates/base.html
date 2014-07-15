@@ -1,0 +1,58 @@
+        <!DOCTYPE html>
+        <html>
+                <meta charset=utf-8>
+                <head>
+                        <title>EasyPinger</title>   
+                        <script src="http://code.jquery.com/jquery-latest.js"></script>
+                        <script src="/media/js/bootstrap.min.js"></script>
+                        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+                        <script type="text/javascript" src="/media/select/bootstrap-select.js"></script>
+                        <link href="/media/select/bootstrap-select.min.css" rel="stylesheet">
+                        <link href="/media/css/bootstrap-switch.min.css" rel="stylesheet">
+                        <script src="/media/js/bootstrap-switch.min.js"></script>
+                        <link href="/media/css/mystyles.css" rel="stylesheet">
+                        <link href="/media/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+                        <script src="/media/js/ajax_pinger.js"></script>
+                </head>
+                <body class="body">
+                        <div class="main-block">
+                                <h2 class="title">EasyPinger</h2>
+                                <h6 class="userlog">Logged in as <b class="username"><i>{{ user }}</i></b> 
+                                    <ul>
+                                        <li><a href="/logout" class="logoutlnk"> Logout</a></li>
+                                        <li><a href="/supporter" class="logoutlnk"> Supporter</a></li>
+                                    </ul>
+                                </h6>
+                        {% block contant %}
+
+                            <div class="pinger_info">
+    
+                                    <input type="button" value="Run Pinger" action="/" id="run" class="btn btn-success" {% if run %} disabled="" {% elif not perm %} disabled="" {% endif %} />
+                                    <input type="button" value="Stop Pinger" action="/" id="stop" class="btn btn-danger" {% if not run %} disabled="" {% elif not perm %} disabled="" {% endif %} />
+                                    {% if not perm %} <h6>Sorry {{ user }}, You don't have permission to run/stop Pinger!</h6> {% endif %}
+                                    {% if run %} <h4>Pinger is running now!</h4> {% endif %}
+                                    {% if not run %} <h4>Pinger is NOT running now!</h4>{% endif %}
+
+                            </div>
+
+                        {% endblock %}
+
+                        {% block footer %}
+                            {{ warning }}
+                            <div class="pinger_table">
+                                <hr />
+                                <h3>Not Available Switches</h3>
+                                <table border="2">
+                                   <tr><th>Switch IP</th><th>Switch Location</th><th>Stop Time</th></tr>
+                                   <tr><td>----</td><td>----</td><td>----</td></tr>
+                                </table>
+                            </div>
+                            <div id="result">
+                                
+                            </div>
+
+                        {% endblock %}
+                        </div>
+
+                </body>
+        </html>

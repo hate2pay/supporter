@@ -1,0 +1,56 @@
+[
+{
+    "pk": 1, 
+    "fields": {
+        "users": [
+            1, 
+            2
+        ], 
+        "allowed_ip": "192.168.186.2"
+    }, 
+    "model": "supporter.ipaddress"
+},
+{
+    "pk": 2, 
+    "fields": {
+        "users": [
+            1, 
+            2
+        ], 
+        "allowed_ip": "192.168.186.3"
+    }, 
+    "model": "supporter.ipaddress"
+},
+{
+    "pk": 3, 
+    "fields": {
+        "users": [
+            1, 
+            2
+        ], 
+        "allowed_ip": "192.168.186.6"
+    }, 
+    "model": "supporter.ipaddress"
+},
+{
+    "pk": 5, 
+    "fields": {
+        "users": [
+            1
+        ], 
+        "allowed_ip": "192.168.186.5"
+    }, 
+    "model": "supporter.ipaddress"
+},
+{
+    "pk": 6, 
+    "fields": {
+        "users": [
+            1, 
+            2
+        ], 
+        "allowed_ip": "192.168.186.4"
+    }, 
+    "model": "supporter.ipaddress"
+}
+]

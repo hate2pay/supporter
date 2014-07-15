@@ -1,0 +1,161 @@
+        <!DOCTYPE html>
+        <html>
+                <meta charset=utf-8>
+                <head>
+                        <title>Supporter</title>   
+                        <script src="http://code.jquery.com/jquery-latest.js"></script>
+                        <script src="/media/js/bootstrap.min.js"></script>
+                        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+                        <script type="text/javascript" src="/media/select/bootstrap-select.js"></script>
+                        <link href="/media/select/bootstrap-select.min.css" rel="stylesheet">
+                        <link href="/media/css/bootstrap-switch.min.css" rel="stylesheet">
+                        <script src="/media/js/bootstrap-switch.min.js"></script>
+                        <link href="/media/css/mystyles.css" rel="stylesheet">
+                        <link href="/media/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+                        <script type="text/javascript">
+                                $(window).on('load', function () {
+
+                                    $('.selectpicker').selectpicker({
+                                        'selectedText': 'cat'
+                                    });
+
+                                    // $('.selectpicker').selectpicker('hide');
+                                });
+                                $("[name='my-checkbox']").bootstrapSwitch();
+                        </script>
+                        <script type="text/javascript">
+                                $(document).ready(function() {
+                                    $("#ajax_link").click(function() {
+                                    var input_string = $("#forminput").val();
+                                    var network_ch = $("#network_ch").val();
+                                    var port_ch = $("#port_ch").val();
+                                    var switch_ch = $("#switch_ch").val();
+                                    var userip = $("#userip").val();
+                                    var allinfo = $("#allinfo").val();
+                                    var vendor = $("#vendor").val();
+
+                                    $.ajax({
+                                            url : "/ajaxexample_json",
+                                            type : "GET",
+                                            dataType: "json",
+                                            data : {
+                                            client_response : input_string,
+                                            network_ch : network_ch,
+                                            port_ch : port_ch,
+                                            switch_ch : switch_ch,
+                                            userip : userip,
+                                            allinfo : allinfo,
+                                            vendor : vendor,
+                                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                                            },
+                                            success : function(json) {
+                                            $('#result').html('<pre>'+'Server Response: ' + json.server_response + '</pre>');
+                                            },
+                                            error : function(xhr,errmsg,err) {
+                                            alert(xhr.status + ": " + xhr.responseText);
+                                    }
+                                    });
+                                    return false;
+                                    });
+                                });
+                        </script>
+                </head>
+                <body><form class="form-search" method="POST" action="">
+                        <div class="main-block">
+                                <h2 class="title">Supporter </h2>
+                                <h6 class="userlog">Logged <a id="button" href="javascript:">in as</a> <b class="username"><i>{{ user }}</i></b> <a href="/logout" class="logoutlnk"> Logout</a></h6>
+                                <div class="container">
+                                        <div class="switch-ip">
+                                                <div class="sel subnet">
+                                                        <span>Subnet №</span><br />
+                                                        <select class="selectpicker myselect" data-style="btn-inverse btn-active" data-width="150px" name="net" id="network_ch">
+                                                        {% for i in networks %}
+                                                            {% if network_ch == i %}
+                                                                <option selected="">{{ i }}</option>
+                                                            {% else %}
+                                                                <option>{{ i }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        </select>
+                                                </div>
+                                                <div class="sel switch">
+                                                        <span>Switch №</span><br />
+                                                        <select class="selectpicker" data-style="btn-inverse" data-width="80px" name="switch" value="5" size="5" id="switch_ch">
+                                                        {% for i in switches %}
+                                                            {% if switch_ch == i %}
+                                                                <option selected="">{{ i }}</option>
+                                                            {% else %}
+                                                                <option>{{ i }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        </select>
+                                                </div>
+                                                <div class="sel port">
+                                                        <span>Port №</span><br />
+                                                        <select class="selectpicker" data-style="btn-inverse" data-width="80px" name="port" size="3" id="port_ch">
+                                                        {% for i in ports %}
+                                                            {% if port_ch == i %}
+                                                                <option selected="">{{ i }}</option>
+                                                            {% else %}
+                                                                <option>{{ i }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        </select>
+                                                </div>
+                                        </div>
+                                        <div class="vendor">
+                                                <span>Vendor Select</span><br />
+                                                        <label class="btn btn-inverse">
+                                                                <input type="radio" name="vendor" id="vendor" value="2" {% if vendor == "2"%} checked {% endif %}>Edge-Core</input>
+                                                        </label>
+                                                        <label class="btn btn-inverse">
+                                                                <input type="radio" name="vendor" id="vendor" value="1" {% if vendor == "1"%} checked {% endif %}>ZyXEL</input>
+                                                        </label>
+                                        </div>
+                                        <div class="output">
+                                                <span>Show/hide switch output</span><br />
+                                                        <label class="btn btn-inverse">
+                                                                <input type="checkbox" id="allinfo" name="allinfo" id="Edge-Core" value="all" {% if allinfo == "all" %} checked {% endif %} />
+                                                        </label>
+                                                
+                                        </div>
+                                        <div class="user-ip">
+                                            <span>Input User's IP</span><br />
+                                            <label >
+                                                <input type="text" name="userip" id="userip" value="{{ userip }}"  class="btn btn-inverse" />
+                                            </label>
+                                        </div>
+                                </div>
+                                <div class="tools">
+                                        <input type="submit" value="Link Diagnostics" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="Cable Diagnostic" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="Show MAC on Switchport" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="IP DHCP Snooping" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="Switchport Status" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="Activate Switchport" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="View Switch Info" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="Show Switch Log" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <input type="submit" value="View Multicast Groups" class="btn btn-lg btn-custom mbtn btn-block" name="btn" />
+                                        <div value="ajax_link" class="btn btn-lg btn-custom mbtn btn-block" id="ajax_link" > ajax_link </div>
+
+                                            
+                                </div>
+                                <div class="textout">
+                                    <div class="inside-area">
+                                    <ul> 
+                                    <input type="text" id="forminput" />
+                                    <pre>{{ massage }}</pre>
+                                    {% for object in objects %}
+                                        <li> {{ object }} </li> 
+                                    {% endfor %} 
+                                    <pre><div id="result"></div></pre>
+
+                                    </ul>
+                                    </div>
+                                        
+                                </div>
+
+                        </div>
+                </form>
+                </body>
+        </html>

@@ -1,0 +1,36 @@
+        <!DOCTYPE html>
+        <html>
+                <meta charset=utf-8>
+                <head>
+                        <title>Supporter</title>   
+                        <script src="http://code.jquery.com/jquery-latest.js"></script>
+                        <script src="/media/js/bootstrap.min.js"></script>
+                        <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+                        <script type="/media/text/javascript" src="select/bootstrap-select.js"></script>
+                        <link href="/media/select/bootstrap-select.min.css" rel="stylesheet">
+                        <link href="/media/css/bootstrap-switch.min.css" rel="stylesheet">
+                        <script src="/media/js/bootstrap-switch.min.js"></script>
+                        <link href="/media/css/mystyles.css" rel="stylesheet">
+                        <link href="/media/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+                </head>
+                <body>
+                    {{ error }}
+                        <div class="logo">
+                                <img src="/media/logo.png"/>
+                        </div>
+                    <form method="POST" action="/login/">
+                            <div class="login-form">
+                            <fieldset>
+                                    <legend>Supporter Login</legend>
+                                    <label for="login">Your Login</label>
+                                    <input type="text" placeholder="Enter Login" name="username">
+                                    <label for="pass">Password</label>
+                                    <input type="password" placeholder="Password" name="password">
+                                    <button type="submit" class="btn btn-success btn-large mbtnl"> Login </button>
+                            </fieldset>
+                            <div class="error">{{ err }}</div>
+                            </div>
+                    </form>
+        
+                </body>
+        </html>
