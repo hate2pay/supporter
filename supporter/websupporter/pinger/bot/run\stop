@@ -1,0 +1,9 @@
+import os
+import signal
+import subprocess
+
+# The os.setsid() is passed in the argument preexec_fn so
+# it's run after the fork() and before  exec() to run the shell.
+p = subprocess.Popen("/home/hate2pay/bot/bot.sh", shell=True, stdout=subprocess.PIPE, preexec_fn=os.setsid)
+
+os.killpg(p.pid, signal.SIGTERM)

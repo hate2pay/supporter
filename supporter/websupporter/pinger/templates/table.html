@@ -1,0 +1,14 @@
+
+
+<hr />
+<h3>Not Available Switches</h3>
+<table border="2">
+    <tr><th>Switch IP</th><th>Switch Location</th><th>Stop Time</th></tr>
+    {% if switches %}
+    	{% for switch in switches %}
+    		<tr><td>{{ switch.ipaddr }}</td><td>{{ switch.name }}</td><td>{{ switch.host_down_time }}</td></tr>
+    	{% endfor %}
+    {% else %}
+    <tr><td>----</td><td>----</td><td>----</td></tr>
+    {% endif %}
+</table>

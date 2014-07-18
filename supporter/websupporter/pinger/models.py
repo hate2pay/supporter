@@ -12,4 +12,6 @@ class Runstatus(models.Model):
 	status = models.BooleanField(verbose_name = 'EasyPinger run status(False = Down, True = Up)', unique = True)
 	name = models.CharField(max_length=30, verbose_name='Status name')
 	
-		
+class Bot(models.Model):
+	path = models.CharField(max_length=60, verbose_name='Path to Bot shell in your system')
+	p_id = models.IntegerField(blank = True, verbose_name='Bot Process ID')		
