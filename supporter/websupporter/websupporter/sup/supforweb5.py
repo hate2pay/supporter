@@ -5,10 +5,10 @@ import telnetlib
 def cablediag(host, iface, details, switchmodel):
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
-        password3 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             tn = telnetlib.Telnet(host, 23, 2)
@@ -117,9 +117,10 @@ def mactest(host, iface, details, switchmodel):
         
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
 
         global tn
         try:
@@ -192,9 +193,10 @@ def errortest(host, iface, details, switchmodel):
 
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             tn = telnetlib.Telnet(host, 23, 2)
@@ -310,9 +312,10 @@ def iptest(host, iface, details, switchmodel, noun):
         
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             oct = noun.split(".")
@@ -399,9 +402,10 @@ def looptest(host, iface, details, switchmodel):
 
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             tn = telnetlib.Telnet(host, 23, 2)
@@ -526,9 +530,10 @@ def portactivate(host, iface, details, switchmodel):
 
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             tn = telnetlib.Telnet(host, 23, 2)
@@ -605,9 +610,10 @@ def sysinfo(host, iface, details, switchmodel):
 
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             tn = telnetlib.Telnet(host, 23, 2)
@@ -677,27 +683,6 @@ def sysinfo(host, iface, details, switchmodel):
             del lines[0]
             del lines[len(lines) - 1]
             file = "\n".join(lines)
-                    #start = file.find("Product")
-                    #file = file[start:]
-                    #lines = file.splitlines()
-                    #del lines[len(lines) - 1]
-                    #file = "\n".join(lines)
-                    #info = ""
-                    #for line in lines:
-                        #if "Product Model" in line:
-                            #word1 = line.split(":")
-                            #info = info + "Модель коммутатора: " + word1[1]
-                        #if "System Name" in line:
-                            #word2 = line.split(":")
-                            #info = info + "\nХостнейм коммутатора: " + word2[1]
-                        #if "Time" in line:
-                            #word3 = line.split(":", 1)
-                            #time = word3[1].split()
-                            #time1 = time[0].split(":")
-                            #info = info + "\nВремя работы коммутатора: " + time1[0] + " часов " + time1[1] + " минут " + time1[2] + " секунд"
-                        #if "Address" in line:
-                            #word4 = line.split(":", 1)
-                            #info = info + "\nМАС адрес коммутатора: " + word4[1]
             story = "Информация о коммутаторе: " + "\n\n\n" + file
             if details:
                 story = "Подробный вывод данных о коммутаторе\n\n" + file
@@ -709,9 +694,10 @@ def showlog(host, iface, details, switchmodel):
 
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             tn = telnetlib.Telnet(host, 23, 2)
@@ -779,7 +765,6 @@ def showlog(host, iface, details, switchmodel):
             cut1 = file.find("---")
             cut2 = file2.find("level")
             file = file[:cut1]
-            #start2 = file2.find("  20")
             file2 = file2[cut2:]
             file = file + file2
             lines = file.splitlines()
@@ -805,9 +790,10 @@ def showprofile(host, iface, details, switchmodel):
 
     if host:    
         user = "admin"
-        password = "MsgPvvF03"
-        password1 = "TFRjhx6224"
-        password2 = "omgMs69F"
+        password = "passwd1"
+        password1 = "passwd2"
+        password2 = "passwd3"
+        password3 = "passwd4"
         global tn
         try:
             tn = telnetlib.Telnet(host, 23, 2)
@@ -956,7 +942,6 @@ def showprofile(host, iface, details, switchmodel):
                 else:
                     channels = "Произошла ОШИБКА! Неудалось определить количество каналов! "
 
-                #result = []
 
                 result = "\n\n\n" + channels
                 tn.write(b"show mvr members sort-by-port ethernet 1/" + iface.encode('ascii') + b"\r\n")
